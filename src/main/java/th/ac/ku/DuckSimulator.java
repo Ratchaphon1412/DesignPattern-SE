@@ -2,33 +2,66 @@ package th.ac.ku;
 
 import th.ac.ku.Adapter.GooseAdapter;
 import th.ac.ku.Adapter.PigeonAdapter;
+import th.ac.ku.Factory.AbstractDuckFactory;
+import th.ac.ku.Factory.CountingEchoDuckFactory;
+import th.ac.ku.Factory.EchoCountingDuckFactory;
 import th.ac.ku.Interface.Quackable;
 import th.ac.ku.Model.*;
 import th.ac.ku.implement.QuackerCounter;
-import th.ac.ku.implement.QuackerEcho;
 
 public class DuckSimulator {
     public static void main(String[] args) {
         DuckSimulator simulator = new DuckSimulator();
-        simulator.simulate();
+        simulator.simulate(new CountingEchoDuckFactory());
     }
 
-    void simulate() {
-        Quackable mallardDuck = new QuackerEcho(new QuackerCounter (new MallardDuck()));
-        Quackable redHeadDuck = new QuackerCounter(new RedHeadDuck());
-        Quackable duckCall = new QuackerCounter(new DuckCall());
-        Quackable rubberDuck = new QuackerCounter(new RubberDuck());
+    void simulate(AbstractDuckFactory duckFactory) {
+        Quackable mallardDuck = duckFactory.createMallardDuck();
+        Quackable redHeadDuck = duckFactory.createRedHeadDuck();
+        Quackable duckCall = duckFactory.createDuckCall();
+        Quackable rubberDuck = duckFactory.createRubberDuck();
         Quackable goose = new GooseAdapter(new Goose());
         Quackable pigeon = new PigeonAdapter(new Pigeon());
 
         System.out.println("\nDuck Simulator");
+        System.out.println();
 
+        System.out.println("Mallard Duck");
+        System.out.println("------------------------------------------");
         simulate(mallardDuck);
+        System.out.println("------------------------------------------");
+        System.out.println();
+
+
+        System.out.println("RedHead Duck");
+        System.out.println("------------------------------------------");
         simulate(redHeadDuck);
+        System.out.println("------------------------------------------");
+        System.out.println();
+
+        System.out.println("Duck Call");
+        System.out.println("------------------------------------------");
         simulate(duckCall);
+        System.out.println("------------------------------------------");
+        System.out.println();
+
+        System.out.println("Rubber Duck");
+        System.out.println("------------------------------------------");
         simulate(rubberDuck);
+        System.out.println("------------------------------------------");
+        System.out.println();
+
+        System.out.println("Goose Goose Duck");
+        System.out.println("------------------------------------------");
         simulate(goose);
+        System.out.println("------------------------------------------");
+        System.out.println();
+
+        System.out.println("Pigeon");
+        System.out.println("------------------------------------------");
         simulate(pigeon);
+        System.out.println("------------------------------------------");
+        System.out.println();
 
         System.out.println("The ducks quacked " + QuackerCounter.getQuacks() + " times");
 
