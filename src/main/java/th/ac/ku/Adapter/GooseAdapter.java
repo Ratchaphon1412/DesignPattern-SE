@@ -1,11 +1,17 @@
-package Adapter;
+package th.ac.ku.Adapter;
 
-import Interface.Quackable;
+import th.ac.ku.Interface.Quackable;
+import th.ac.ku.Model.Goose;
 
 public class GooseAdapter implements Quackable {
-    
+    private Goose goose;
 
+    public GooseAdapter(Goose goose) {
+        this.goose = goose;
+    }
     public void quack() {
-        System.out.println("Honk");
+       goose.honk();
+       goose.honk();
+
     }
 }

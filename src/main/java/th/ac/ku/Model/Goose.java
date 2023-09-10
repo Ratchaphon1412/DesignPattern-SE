@@ -1,4 +1,4 @@
-package th.ac.ku;
+package th.ac.ku.Model;
 
 public class Goose {
     public void honk() {

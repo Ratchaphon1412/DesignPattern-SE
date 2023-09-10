@@ -1,9 +1,10 @@
-package th.ac.ku;
+package th.ac.ku.Model;
 
-import Interface.Quackable;
+import th.ac.ku.Interface.Quackable;
 
 public class DuckCall implements Quackable {
     public void quack() {
         System.out.println("Kwak");
     }
+
 }
