@@ -9,6 +9,7 @@ public class QuackerCounter implements Quackable {
 
     public QuackerCounter(Quackable duck){
         this.duck = duck;
+        numberOfQuacks = 0;
     }
 
     @Override
